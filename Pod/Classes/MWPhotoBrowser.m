@@ -65,6 +65,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     _currentPageIndex = 0;
     _previousPageIndex = NSUIntegerMax;
     _displayActionButton = YES;
+    _actionButtonType = UIBarButtonSystemItemAction;
     _displayNavArrows = NO;
     _zoomPhotosToFill = YES;
     _performingLayout = NO; // Reset on view did appear
@@ -176,7 +177,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
         _nextButton = [[UIBarButtonItem alloc] initWithImage:nextButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(gotoNextPage)];
     }
     if (self.displayActionButton) {
-        _actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonPressed:)];
+        _actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:self.actionButtonType target:self action:@selector(actionButtonPressed:)];
     }
     
     // Update
